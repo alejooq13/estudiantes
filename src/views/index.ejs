@@ -1,0 +1,78 @@
+<%- include('partials/_header') %>
+
+    <div class="container">
+        <div class="row">
+            <!--Formulario-->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="cedula" placeholder="Cédula" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="telefono" placeholder="Teléfono" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="sexo" placeholder="Sexo" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="nivel" placeholder="Nivel" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="edad" placeholder="Edad" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="clase" placeholder="Clase" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="peso" placeholder="Peso" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Lista-->
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Cedula</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Sexo</th>
+                            <th>Nivel</th>
+                            <th>Edad</th>
+                            <th>Clase</th>
+                            <th>Peso</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i<students.length; i++) {  %>
+                            <tr>
+                                <td><%= students[i].cedula %></td>
+                                <td><%= students[i].nombre %></td>
+                                <td><%= students[i].telefono %></td>
+                                <td><%= students[i].sexo %></td>
+                                <td><%= students[i].nivel %></td>
+                                <td><%= students[i].edad %></td>
+                                <td><%= students[i].clase %></td>
+                                <td><%= students[i].peso %></td>
+                                <td>
+                                    <a href="/edit/<%= students[i]._id %>" class="btn btn-info btn-sm">U</a>
+                                    <a href="/delete/<%= students[i]._id %>" class="btn btn-danger btn-sm">D</a>
+                                </td>
+                            </tr>
+                        <%  } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+<%- include('partials/_footer') %>
